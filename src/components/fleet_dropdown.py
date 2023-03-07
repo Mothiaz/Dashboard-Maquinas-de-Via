@@ -1,6 +1,7 @@
 import pandas as pd
 from dash import Dash, dcc, html, ctx
 from dash.dependencies import Input, Output
+import dash_bootstrap_components as dbc
 
 from ..data.loader import DataSchema
 from . import ids
@@ -53,14 +54,16 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                 multi=True,
                 placeholder='Select',
             ),
-            html.Button(
-                className='dropdown-button',
+            dbc.Button(
+                className='m-1',
+                size='sm',
                 children=['Select All'],
                 id=ids.SELECT_ALL_FLEETS_BUTTON,
                 n_clicks=0,
             ),
-            html.Button(
-                className='dropdown-button',
+            dbc.Button(
+                className='m-1',
+                size='sm',
                 children=['Select None'],
                 id=ids.SELECT_NULL_FLEETS_BUTTON,
                 n_clicks=0,

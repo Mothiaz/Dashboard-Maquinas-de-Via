@@ -11,7 +11,7 @@ DATA_PATH = 'C:/Users/Matheus/PycharmProjects/DASHBOARD MV2/src/data/perfilperda
 
 def main() -> None:
     data = load_data(DATA_PATH)
-    app = Dash(__name__, external_stylesheets=[dbc.themes.ZEPHYR, dbc_css])
+    app = Dash(__name__, external_stylesheets=[dbc.themes.BOOTSTRAP, dbc_css])
     app.title = "Analise de Perfil de Perdas - Maquinas de Via"
     # data = DataSource(data)
     app.layout = create_layout(app, data)
