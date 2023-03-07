@@ -19,12 +19,15 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
          Input(ids.EQUIPMENT_TYPE, 'value'),
          Input(ids.EVENT_TYPE, 'value'),],
     )
-    def update_value(_int1, _int2, start_date: str, end_date: str, tipo: list[str], event: list[str]) -> list[str]:
+    def update_value(_int1, _int2,
+                     start_date: str, end_date: str,
+                     tipo: list[str], event: list[str]) -> list[str]:
         button_clicked = ctx.triggered_id
         if button_clicked == ids.SELECT_NULL_FLEETS_BUTTON:
             return []
         else:
-            filtered_data = data.query('date >= @start_date and date <= @end_date and tipo in @tipo and event in @event')
+            filtered_data = data.query('date >= @start_date and date <= @end_date '
+                                       'and tipo in @tipo and event in @event')
             return sorted(set(filtered_data[DataSchema.FLEET].tolist()))
 
     @app.callback(
@@ -35,7 +38,8 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
          Input(ids.EVENT_TYPE, 'value'),],
     )
     def update_options(start_date: str, end_date: str, tipo: list[str], event: list[str]) -> list[str]:
-        filtered_data = data.query('date >= @start_date and date <= @end_date and tipo in @tipo and event in @event')
+        filtered_data = data.query('date >= @start_date and date <= @end_date '
+                                   'and tipo in @tipo and event in @event')
         return sorted(set(filtered_data[DataSchema.FLEET].tolist()))
 
     return html.Div(

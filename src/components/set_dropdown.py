@@ -29,6 +29,19 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                                        'and system in @systems')
             return sorted(set(filtered_data[DataSchema.SET].tolist()))
 
+    @app.callback(
+        Output(ids.SET_DROPDOWN, 'options'),
+        [Input(ids.DATE_RANGE, 'start_date'),
+         Input(ids.DATE_RANGE, 'end_date'),
+         Input(ids.SYSTEM_DROPDOWN, 'value')]
+    )
+
+    def update_options(start_date: str, end_date: str,
+                     systems: list[str]) -> list[str]:
+        filtered_data = data.query('date >= @start_date and date <= @end_date '
+                                   'and system in @systems')
+        return sorted(set(filtered_data[DataSchema.SET].tolist()))
+
 
     return html.Div(
         children=[
