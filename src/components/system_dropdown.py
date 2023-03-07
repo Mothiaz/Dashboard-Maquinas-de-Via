@@ -21,7 +21,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
     )
     def update_value(_int1, _int2, start_date: str, end_date: str, fleets: list[str]) -> list[str]:
         button_clicked = ctx.triggered_id
-        if button_clicked == ids.SELECT_NULL_FLEETS_BUTTON:
+        if button_clicked == ids.SELECT_NULL_SYSTEMS_BUTTON:
             return []
         else:
             filtered_data = data.query('date >= @start_date and date <= @end_date and fleet in @fleets')

@@ -13,9 +13,10 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
         children=[
             html.H6('Event Type'),
             dcc.Checklist(
-                id=ids.EQUIPMENT_TYPE,
+                id=ids.EVENT_TYPE,
                 options=[{'label': event, 'value': event}
                          for event in unique_events],
+                value=['']
             ),
         ]
     )

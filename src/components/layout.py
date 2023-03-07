@@ -7,10 +7,11 @@ from src.components import (
     system_dropdown,
     fleet_dropdown,
     fleet_bar_chart,
+    set_dropdown,
     time_line_chart,
     date_range,
     equipment_type,
-    # event_type,
+    event_type,
 )
 
 
@@ -24,12 +25,13 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div():
                 className='dropdown-container',
                 children=[
                     date_range.render(app, data),
-                    # event_type.render(app, data),
+                    event_type.render(app, data),
                     html.Hr(),
                     equipment_type.render(app, data),
                     html.Hr(),
                     fleet_dropdown.render(app, data),
-                    system_dropdown.render(app, data)
+                    system_dropdown.render(app, data),
+                    set_dropdown.render(app, data),
                 ]
             ),
             html.Hr(),

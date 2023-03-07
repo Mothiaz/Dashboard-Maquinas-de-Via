@@ -8,6 +8,7 @@ SYSTEM_DROPDOWN = 'system-dropdown'
 FLEET_DROPDOWN = 'fleet-dropdown'
 EQUIPMENT_TYPE = 'equipment-type'
 EVENT_TYPE = 'event-type'
+SET_DROPDOWN = 'set-dropdown'
 
 ################ BUTTONS ####################
 
@@ -18,6 +19,8 @@ SELECT_ALL_FLEETS_BUTTON = 'select-all-fleets-button'
 SELECT_NULL_FLEETS_BUTTON = 'select-null-fleets-button'
 SELECT_ALL_SYSTEMS_BUTTON = 'select-all-systems-button'
 SELECT_NULL_SYSTEMS_BUTTON = 'select-null-systems-button'
+SELECT_ALL_SETS_BUTTON = 'select-all-sets-button'
+SELECT_NULL_SETS_BUTTON = 'select-null-sets-button'
 
 ################ RANGES ####################
 

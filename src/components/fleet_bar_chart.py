@@ -14,15 +14,18 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
         Output(ids.FLEET_BAR_CHART, 'children'),
         [Input(ids.DATE_RANGE, 'start_date'),
          Input(ids.DATE_RANGE, 'end_date'),
+         Input(ids.EVENT_TYPE, 'value'),
          Input(ids.EQUIPMENT_TYPE, 'value'),
          Input(ids.FLEET_DROPDOWN, 'value'), ]
     )
     def update_bar_chart(
             start_date: str,
             end_date: str,
+            event: list[str],
             tipo: list[str],
             fleets: list[str], ) -> html.Div:
-        filtered_data = data.query('date >= @start_date and date <= @end_date and tipo in @tipo and fleet in @fleets')
+        filtered_data = data.query('date >= @start_date and date <= @end_date and event in @event and tipo in @tipo '
+                                   'and fleet in @fleets')
 
         if filtered_data.shape[0] == 0:
             return html.Div('No data selected')
