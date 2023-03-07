@@ -17,7 +17,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
          Input(ids.DATE_RANGE, 'start_date'),
          Input(ids.DATE_RANGE, 'end_date'),
          Input(ids.EQUIPMENT_TYPE, 'value'),
-         Input(ids.EVENT_TYPE, 'value'),],
+         Input(ids.EVENT_TYPE, 'value'), ],
     )
     def update_value(_int1, _int2,
                      start_date: str, end_date: str,
@@ -35,7 +35,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
         [Input(ids.DATE_RANGE, 'start_date'),
          Input(ids.DATE_RANGE, 'end_date'),
          Input(ids.EQUIPMENT_TYPE, 'value'),
-         Input(ids.EVENT_TYPE, 'value'),],
+         Input(ids.EVENT_TYPE, 'value'), ],
     )
     def update_options(start_date: str, end_date: str, tipo: list[str], event: list[str]) -> list[str]:
         filtered_data = data.query('date >= @start_date and date <= @end_date '

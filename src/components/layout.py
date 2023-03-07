@@ -8,6 +8,7 @@ from src.components import (
     fleet_dropdown,
     fleet_bar_chart,
     set_dropdown,
+    item_dropdown,
     time_line_chart,
     date_range,
     equipment_type,
@@ -30,8 +31,10 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div():
                     equipment_type.render(app, data),
                     html.Hr(),
                     fleet_dropdown.render(app, data),
+                    html.Spacer(),
                     system_dropdown.render(app, data),
                     set_dropdown.render(app, data),
+                    item_dropdown.render(app, data),
                 ]
             ),
             html.Hr(),
