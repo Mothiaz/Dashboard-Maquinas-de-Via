@@ -51,7 +51,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                          for fleet in unique_fleets],
                 value=unique_fleets,
                 multi=True,
-                placeholder='Select'
+                placeholder='Select',
             ),
             html.Button(
                 className='dropdown-button',
@@ -65,5 +65,5 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                 id=ids.SELECT_NULL_FLEETS_BUTTON,
                 n_clicks=0,
             )
-        ]
+        ],
     )

@@ -29,5 +29,6 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                 end_date=datetime.date.today(),
                 display_format='DD/MM/YYYY'
             ),
-        ]
+        ],
+        className= 'mb-1'
     )

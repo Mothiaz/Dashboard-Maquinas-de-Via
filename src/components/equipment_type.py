@@ -1,6 +1,6 @@
 import pandas as pd
 from dash import Dash, dcc, html, ctx
-
+import dash_bootstrap_components as dbc
 from ..data.loader import DataSchema
 from . import ids
 
@@ -22,11 +22,12 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
     return html.Div(
         children=[
             html.H6('Tipo'),
-            dcc.Checklist(
+            dbc.Checklist(
                 id=ids.EQUIPMENT_TYPE,
                 options=[{'label': tipo, 'value': tipo}
                          for tipo in unique_types],
                 value=[''],
+                inline=True,
             ),
         ]
     )

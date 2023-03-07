@@ -1,6 +1,6 @@
 import pandas as pd
 from dash import Dash, html
-# import pandas as pd
+import dash_bootstrap_components as dbc
 
 from src.components import (
     system_bar_chart,
@@ -18,19 +18,24 @@ from src.components import (
 
 
 def create_layout(app: Dash, data: pd.DataFrame) -> html.Div():
-    return html.Div(
-        className='app-div',
+    return dbc.Container(
+        className='dbc',
         children=[
-            html.H1(app.title),
+            html.H1(app.title, style={'textAlign': 'center'}),
             html.Hr(),
             html.Div(
-                className='dropdown-container',
                 children=[
-                    date_range.render(app, data),
+                    date_range.render(app, data)
+                ]
+            ),
+            html.Div(
+                children=[
                     event_type.render(app, data),
-                    html.Hr(),
                     equipment_type.render(app, data),
-                    html.Hr(),
+                ]
+            ),
+            html.Div(
+                children=[
                     fleet_dropdown.render(app, data),
                     system_dropdown.render(app, data),
                     set_dropdown.render(app, data),
@@ -40,7 +45,6 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div():
             ),
             html.Hr(),
             html.Div(
-                className='graph-container',
                 children=[
                     fleet_bar_chart.render(app, data),
                     system_bar_chart.render(app, data),
