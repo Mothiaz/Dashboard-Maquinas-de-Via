@@ -1,5 +1,5 @@
 from dash import Dash
-from dash_bootstrap_components.themes import BOOTSTRAP
+import dash_bootstrap_components as dbc
 
 from src.components.layout import create_layout
 from src.data.loader import load_data
@@ -11,7 +11,7 @@ DATA_PATH = 'C:/Users/Matheus/PycharmProjects/DASHBOARD MV2/src/data/perfilperda
 
 def main() -> None:
     data = load_data(DATA_PATH)
-    app = Dash(external_stylesheets=[BOOTSTRAP])
+    app = Dash(external_stylesheets=[dbc.themes.VAPOR])
     app.title = "Dashboard MV"
     # data = DataSource(data)
     app.layout = create_layout(app, data)
