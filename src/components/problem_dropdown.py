@@ -33,12 +33,16 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
         Output(ids.PROBLEM_DROPDOWN, 'options'),
         [Input(ids.DATE_RANGE, 'start_date'),
          Input(ids.DATE_RANGE, 'end_date'),
-         Input(ids.ITEM_DROPDOWN, 'value')]
+         Input(ids.ITEM_DROPDOWN, 'value'),
+         Input(ids.EQUIPMENT_DROPDOWN, 'value'),
+         Input(ids.EVENT_TYPE, 'value')]
     )
     def update_options(start_date: str, end_date: str,
-                       items: list[str]) -> list[str]:
+                       items: list[str], equips: list[str],
+                       event: list[str]) -> list[str]:
         filtered_data = data.query('date >= @start_date and date <= @end_date '
-                                   'and item in @items')
+                                   'and item in @items and equip in @equips '
+                                   'and event in @event')
         return sorted(set(filtered_data[DataSchema.PROBLEM].tolist()))
 
     return html.Div(
