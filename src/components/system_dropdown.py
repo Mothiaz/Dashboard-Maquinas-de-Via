@@ -33,11 +33,9 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
          Input(ids.DATE_RANGE, 'end_date'),
          Input(ids.EQUIPMENT_DROPDOWN, 'value'), ],
     )
-
     def update_options(start_date: str, end_date: str, equips: list[str]) -> list[str]:
         filtered_data = data.query('date >= @start_date and date <= @end_date and equip in @equips')
         return sorted(set(filtered_data[DataSchema.SYSTEM].tolist()))
-
 
     return html.Div(
         children=[

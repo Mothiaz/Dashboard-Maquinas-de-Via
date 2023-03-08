@@ -44,5 +44,6 @@ DATE_RANGE = 'date-range'
 ################ GRAPHS ####################
 
 FLEET_BAR_CHART = 'fleet-bar-chart'
+EQUIPMENT_BAR_CHART = 'equipment-bar-chart'
 SYSTEM_BAR_CHART = 'system-bar-chart'
 TIME_LINE_CHART = 'time-line-chart'

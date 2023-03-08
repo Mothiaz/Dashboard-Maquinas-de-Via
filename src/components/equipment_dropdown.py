@@ -17,28 +17,31 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
          Input(ids.SELECT_NULL_EQUIPS_BUTTON, 'n_clicks'),
          Input(ids.DATE_RANGE, 'start_date'),
          Input(ids.DATE_RANGE, 'end_date'),
+         Input(ids.EVENT_TYPE, 'value'),
          Input(ids.FLEET_DROPDOWN, 'value'), ],
     )
     def update_value(_int1, _int2,
                      start_date: str, end_date: str,
-                     fleets: list[str]) -> list[str]:
+                     event: list[str], fleets: list[str]) -> list[str]:
         button_clicked = ctx.triggered_id
         if button_clicked == ids.SELECT_NULL_EQUIPS_BUTTON:
             return []
         else:
             filtered_data = data.query('date >= @start_date and date <= @end_date '
-                                       'and fleet in @fleets')
+                                       'and event in @event and fleet in @fleets')
             return sorted(set(filtered_data[DataSchema.EQUIPMENT].tolist()))
 
     @app.callback(
         Output(ids.EQUIPMENT_DROPDOWN, 'options'),
         [Input(ids.DATE_RANGE, 'start_date'),
          Input(ids.DATE_RANGE, 'end_date'),
+         Input(ids.EVENT_TYPE, 'value'),
          Input(ids.FLEET_DROPDOWN, 'value'), ],
     )
-    def update_options(start_date: str, end_date: str, fleets: list[str]) -> list[str]:
+    def update_options(start_date: str, end_date: str,
+                       event: list[str], fleets: list[str]) -> list[str]:
         filtered_data = data.query('date >= @start_date and date <= @end_date '
-                                   'and fleet in @fleets')
+                                   'and event in @event and fleet in @fleets')
         return sorted(set(filtered_data[DataSchema.EQUIPMENT].tolist()))
 
     return html.Div(

@@ -39,9 +39,6 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
 
             return pt.reset_index().sort_values(DataSchema.OM, ascending=False)
 
-        if filtered_data.shape[0] == 0:
-            return html.Div('No data selected.')
-
         fig = px.bar(
             data_frame=create_pivot_table(),
             x=DataSchema.FLEET,
