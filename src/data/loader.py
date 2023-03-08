@@ -2,7 +2,7 @@ import pandas as pd
 
 
 class DataSchema:
-    EQUIP = 'equip'
+    EQUIPMENT = 'equip'
     REPAIRTIME = 'repairTime'
     FALHA = 'falha'
     DATE = 'date'
@@ -23,7 +23,7 @@ def load_data(path: str) -> pd.DataFrame:
     # carregar documento
     data = pd.read_excel(path, 'ClasseDeFalhas', skiprows=1, dtype={'OM': str}, parse_dates=['Dia'])
     data.columns = data.columns.str.lower()  # colunas minusculas
-    data.rename(columns={'equip.': DataSchema.EQUIP, 'retenção': DataSchema.REPAIRTIME,
+    data.rename(columns={'equip.': DataSchema.EQUIPMENT, 'retenção': DataSchema.REPAIRTIME,
                          'falha?': DataSchema.FALHA, 'dia': DataSchema.DATE,
                          'tipo': DataSchema.TIPO, 'descrição': DataSchema.DESCRICAO,
                          'om': DataSchema.OM, 'frota': DataSchema.FLEET, 'sistema': DataSchema.SYSTEM,

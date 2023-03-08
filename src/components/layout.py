@@ -7,6 +7,7 @@ from src.components import (
     system_dropdown,
     fleet_dropdown,
     fleet_bar_chart,
+    equipment_dropdown,
     set_dropdown,
     item_dropdown,
     problem_dropdown,
@@ -37,6 +38,7 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div():
             html.Div(
                 children=[
                     fleet_dropdown.render(app, data),
+                    equipment_dropdown.render(app, data),
                     system_dropdown.render(app, data),
                     set_dropdown.render(app, data),
                     item_dropdown.render(app, data),
