@@ -7,7 +7,7 @@ from src.components import (
     fleet_dropdown, fleet_bar_chart,
     equipment_dropdown, equipment_bar_chart,
     set_dropdown, set_bar_chart,
-    item_dropdown,
+    item_dropdown, item_bar_chart,
     problem_dropdown,
 
     time_line_chart,
@@ -51,6 +51,7 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div():
                     equipment_bar_chart.render(app, data),
                     system_bar_chart.render(app, data),
                     set_bar_chart.render(app, data),
+                    item_bar_chart.render(app, data),
                     time_line_chart.render(app, data),
                 ]
             ),
