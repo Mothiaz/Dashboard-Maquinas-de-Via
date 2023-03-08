@@ -3,18 +3,13 @@ from dash import Dash, html
 import dash_bootstrap_components as dbc
 
 from src.components import (
-    system_bar_chart,
-    system_dropdown,
-
-    fleet_dropdown,
-    fleet_bar_chart,
-
-    equipment_dropdown,
-    equipment_bar_chart,
-
-    set_dropdown,
+    system_bar_chart, system_dropdown,
+    fleet_dropdown, fleet_bar_chart,
+    equipment_dropdown, equipment_bar_chart,
+    set_dropdown, set_bar_chart,
     item_dropdown,
     problem_dropdown,
+
     time_line_chart,
     date_range,
     equipment_type,
@@ -55,6 +50,7 @@ def create_layout(app: Dash, data: pd.DataFrame) -> html.Div():
                     fleet_bar_chart.render(app, data),
                     equipment_bar_chart.render(app, data),
                     system_bar_chart.render(app, data),
+                    set_bar_chart.render(app, data),
                     time_line_chart.render(app, data),
                 ]
             ),

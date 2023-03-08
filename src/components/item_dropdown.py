@@ -22,6 +22,7 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
                      start_date: str, end_date: str,
                      conjuntos: list[str]) -> list[str]:
         button_clicked = ctx.triggered_id
+
         if button_clicked == ids.SELECT_NULL_ITEMS_BUTTON:
             return ['']
         else:
@@ -33,11 +34,15 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
         Output(ids.ITEM_DROPDOWN, 'options'),
         [Input(ids.DATE_RANGE, 'start_date'),
          Input(ids.DATE_RANGE, 'end_date'),
+         Input(ids.EVENT_TYPE, 'value'),
+         Input(ids.EQUIPMENT_DROPDOWN, 'value'),
          Input(ids.SET_DROPDOWN, 'value')]
     )
     def update_options(start_date: str, end_date: str,
+                       event: list[str], equips: list[str],
                        conjuntos: list[str]) -> list[str]:
         filtered_data = data.query('date >= @start_date and date <= @end_date '
+                                   'and event in @event and equip in @equips '
                                    'and conjunto in @conjuntos')
         return sorted(set(filtered_data[DataSchema.ITEM].tolist()))
 

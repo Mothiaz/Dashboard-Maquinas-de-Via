@@ -17,18 +17,17 @@ def render(app: Dash, data: pd.DataFrame) -> html.Div:
          Input(ids.SELECT_NULL_FLEETS_BUTTON, 'n_clicks'),
          Input(ids.DATE_RANGE, 'start_date'),
          Input(ids.DATE_RANGE, 'end_date'),
-         Input(ids.EQUIPMENT_TYPE, 'value'),
-         Input(ids.EVENT_TYPE, 'value'), ],
+         Input(ids.EQUIPMENT_TYPE, 'value'), ],
     )
     def update_value(_int1, _int2,
                      start_date: str, end_date: str,
-                     tipo: list[str], event: list[str]) -> list[str]:
+                     tipo: list[str]) -> list[str]:
         button_clicked = ctx.triggered_id
         if button_clicked == ids.SELECT_NULL_FLEETS_BUTTON:
             return []
         else:
             filtered_data = data.query('date >= @start_date and date <= @end_date '
-                                       'and tipo in @tipo and event in @event')
+                                       'and tipo in @tipo')
             return sorted(set(filtered_data[DataSchema.FLEET].tolist()))
 
     @app.callback(
